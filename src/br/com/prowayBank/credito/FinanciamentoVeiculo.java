@@ -2,8 +2,8 @@ package br.com.prowayBank.credito;
 
 public class FinanciamentoVeiculo {
 	
-	Integer scoreSerasa;
-	Veiculo veiculo;	
+	private Integer scoreSerasa;
+	private Veiculo veiculo;	
 
 	public FinanciamentoVeiculo(Integer scoreSerasa, Veiculo veiculo) {
 		this.scoreSerasa = scoreSerasa;
@@ -24,11 +24,45 @@ public class FinanciamentoVeiculo {
 	public String financiarVeiculo() {
 		String resultado = "Pedido de financiamento aceito.";
 
-		if ((this.scoreSerasa < 301 && (this.veiculo.tipoVeiculo != TipoVeiculo.MOTO && this.veiculo.situacaoVeiculo == SituacaoVeiculo.NOVO))
-				|| (this.scoreSerasa < 701 && (this.veiculo.tipoVeiculo == TipoVeiculo.IATE || this.veiculo.tipoVeiculo == TipoVeiculo.LIMOUSINE))) {
+		if ((this.scoreSerasa < 301 && (this.veiculo.getTipoVeiculo() != TipoVeiculo.MOTO && this.veiculo.getSituacaoVeiculo() == SituacaoVeiculo.NOVO))
+				|| (this.scoreSerasa < 701 && (this.veiculo.getTipoVeiculo() == TipoVeiculo.IATE || this.veiculo.getTipoVeiculo() == TipoVeiculo.LIMOUSINE))) {
 			resultado = "Nao e possivel realizar o financiamento do veiculo.";
 		}
 
 		return resultado;
 	}
+
+	
+	/**
+	 * Retorna o score do serasa da pessoa que deseja financiar.
+	 * @return
+	 */	
+	public Integer getScoreSerasa() {
+		return scoreSerasa;
+	}
+	/**
+	 * Altera o score do serasa da pessoa que deseja financiar.	
+	 * @param scoreSerasa
+	 */
+	public void setScoreSerasa(Integer scoreSerasa) {
+		this.scoreSerasa = scoreSerasa;
+	}
+	
+	/**
+	 * Retorna o veiculo que será financiado.
+	 * @return
+	 */
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+	
+	/**
+	 * Altera o veiculo que será financiado.
+	 * @param veiculo
+	 */
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
+	}
+	
+	
 }
